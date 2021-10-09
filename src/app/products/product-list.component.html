@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-header">{{pageTitle}}</div>
+  <div class="card-header">{{ pageTitle }}</div>
   <div class="card-body">
     <div class="row">
       <div class="col-md-2">Filter by:</div>
@@ -12,13 +12,13 @@
         <h4>Filtered by:</h4>
       </div>
     </div>
-    <div class="table-responsive" *ngIf = 'products.length'>
+    <div class="table-responsive" *ngIf="products.length">
       <table class="table">
         <thead>
           <tr>
             <th>
-              <button class="btn btn-primary" >
-                  Show Image
+              <button (click)="toggleImage()" class="btn btn-primary">
+                {{ showImage ? "Hide Image" : "Show Image" }}
               </button>
             </th>
             <th>Product</th>
@@ -29,14 +29,22 @@
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor = 'let product of products'>
-                <td></td>
-                <td>{{product.productName}}</td>
-                <td>{{product.productCode}}</td>
-                <td>{{product.releaseDate}}</td>
-                <td>{{product.price}}</td>
-                <td>{{product.starRating}}</td>
-            </tr>
+          <tr *ngFor="let product of products">
+            <td>
+              <img
+                *ngIf="showImage"
+                [src]="product.imageUrl"
+                [title]="product.productName"
+                [style.width.px]="imageWidth"
+                [style.margin.px]="imageMargin"
+              />
+            </td>
+            <td>{{ product.productName }}</td>
+            <td>{{ product.productCode }}</td>
+            <td>{{ product.releaseDate }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.starRating }}</td>
+          </tr>
         </tbody>
       </table>
     </div>
