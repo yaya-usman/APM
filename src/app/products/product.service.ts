@@ -5,6 +5,9 @@ import { IProduct } from './product';
     providedIn: 'root'
 })
 export class ProductService {
+
+  constructor(private http: HttpClient){}
+  
   getProducts(): IProduct[] {
     return [
       {
