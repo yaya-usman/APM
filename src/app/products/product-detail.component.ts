@@ -7,7 +7,13 @@ import { ProductService } from './product.service';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent{
+export class ProductDetailComponent implements OnInit{
   pageTitle = 'Product Detail';
+  product!: IProduct;
+  constructor(private route: ActivatedRoute){}
+
+  ngOnInit(): void{
+    const id: number = Number(this.route.snapshot.paramMap.get('id'));
+  }
 
 }
