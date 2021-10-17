@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './home/welcome.component';
 import { ProductDetailComponent } from './products/product-detail.component';
 import { ProductDetailGaurd } from './products/product-detail.gaurd';
+import { ProductModule } from './products/product.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ProductDetailGaurd } from './products/product-detail.gaurd';
       { path: '', redirectTo: 'welcome',pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' },
     ]),
+    ProductModule,
   ],
   bootstrap: [AppComponent],
 })
